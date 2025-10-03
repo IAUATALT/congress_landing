@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2º Congreso Internacional de Inteligencia Artificial – UT Altamira</title>
+  <meta name="description" content="2º Congreso Internacional de Inteligencia Artificial. 13–14 de noviembre de 2025 · Universidad Tecnológica de Altamira. Tecnología de vanguardia, ética y aplicaciones para la industria, la educación y la sociedad.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070a1a; --bg2:#0c1433; --pri:#00d0ff; --pri2:#6cf2ff; --acc:#19ffa9; --txt:#e8f3ff; --mut:#9fb2c7;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 600px at 15% -10%, #0e2b52 0%, transparent 60%), linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); color:var(--txt); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+    a{color:var(--pri)}
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:30; backdrop-filter:saturate(140%) blur(6px); background:rgba(7,10,26,.55); border-bottom:1px solid rgba(255,255,255,.08); display:flex; gap:16px; align-items:center; justify-content:center; padding:10px}
+    .nav a{font-weight:600; text-decoration:none; padding:8px 12px; border-radius:999px}
+    .nav a:hover{background:rgba(255,255,255,.07)}
+    /* HERO */
+    .hero{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center; max-width:1100px; margin:28px auto 0; padding:0 18px}
+    .hero img{width:100%; border-radius:14px; box-shadow:0 14px 40px rgba(0,0,0,.45)}
+    .badge{display:inline-block; padding:6px 12px; border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:.9rem; color:var(--pri2); background:rgba(0,208,255,.08)}
+    h1{font-family:Montserrat, Inter, sans-serif; font-weight:800; line-height:1.05; margin:10px 0 6px; font-size:clamp(26px, 4vw, 46px)}
+    .lead{font-size:1.05rem; color:var(--mut)}
+    .cta{margin-top:14px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:700; letter-spacing:.2px; transition:transform .08s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:linear-gradient(90deg, var(--pri) 0%, #4ef1ff 100%); color:#00121a}
+    .btn-ghost{border:1px solid rgba(255,255,255,.16); color:var(--txt)}
+    /* COUNTDOWN */
+    .timer{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+    .tbox{min-width:92px; text-align:center; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:12px 10px}
+    .tbox .num{font-family:Montserrat; font-weight:800; font-size:clamp(26px,4vw,42px); color:white; text-shadow:0 0 20px rgba(0,208,255,.35)}
+    .tbox .lab{font-size:.8rem; color:var(--mut); letter-spacing:.5px}
+    /* SECTIONS */
+    section{max-width:1100px; margin:52px auto; padding:0 18px}
+    h2{font-family:Montserrat; font-weight:800; font-size:clamp(22px, 3vw, 30px); color:var(--pri)}
+    .grid{display:grid; gap:16px}
+    .cards{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:18px}
+    .mut{color:var(--mut)}
+    /* MAP */
+    .map-wrap{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+    .map{border:0; border-radius:12px; width:360px; height:260px; box-shadow:0 10px 28px rgba(0,0,0,.35)}
+    /* FOOTER */
+    footer{border-top:1px solid rgba(255,255,255,.08); padding:22px 18px; text-align:center; color:var(--mut)}
+    /* small screens */
+    @media (max-width:900px){ .hero{grid-template-columns:1fr; gap:16px} }
+    /* ====== Mobile polish ====== */
+    @media (max-width: 900px){
+    .hero{grid-template-columns:1fr; gap:16px}
+    }
+
+    @media (max-width: 640px){
+    /* Nav: scroll horizontal suave si no cabe */
+    .nav{
+        justify-content:flex-start;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        gap:10px;
+        padding:8px 12px;
+    }
+    .nav a{white-space:nowrap; padding:8px 10px; font-size:0.95rem}
+
+    /* Hero */
+    .hero{margin:14px auto 0; padding:0 12px}
+    .hero img{border-radius:12px; max-height:360px; object-fit:cover}
+    h1{font-size:clamp(24px, 7vw, 34px)}
+    .lead{font-size:1rem}
+
+    /* Botones: cómodos con el pulgar */
+    .cta{gap:10px}
+    .btn{flex:1 1 100%; text-align:center; padding:12px 14px; border-radius:10px}
+
+    /* Countdown: 2 columnas, cajas más compactas */
+    .timer{gap:8px}
+    .tbox{min-width:0; flex:1 1 calc(50% - 8px); padding:10px 8px}
+    .tbox .num{font-size:clamp(22px, 8vw, 36px)}
+    .tbox .lab{font-size:.78rem}
+
+    /* Secciones y tarjetas */
+    section{margin:36px auto; padding:0 12px}
+    h2{font-size:clamp(20px, 6vw, 28px)}
+    .cards{grid-template-columns:1fr; gap:12px}
+    .card{padding:16px; border-radius:12px}
+
+    /* Mapa compacto y movible */
+    .map-wrap{gap:12px}
+    .map{width:100%; height:220px; border-radius:10px}
+    }
+
+    @media (max-width: 380px){
+    .btn{font-size:.95rem; padding:11px 12px}
+    .badge{font-size:.85rem; padding:5px 10px}
+    .tbox .lab{letter-spacing:.3px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#registro">Registro</a>
+    <a href="#tematicas">Temáticas</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#sede">Sede</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- HERO + TIMER -->
+  <header class="hero">
+    <img src="sources/flyer_2.png" alt="Flyer del Congreso Internacional de IA">
+    <div>
+      <span class="badge">Universidad Tecnológica de Altamira</span>
+      <h1>2º Congreso Internacional de <span style="color:#7fefff">Inteligencia Artificial</span></h1>
+      <p class="lead">
+        13–14 de noviembre de 2025 · Inicio del programa: <strong>13 de noviembre, 09:00 h</strong> (hora local).<br>
+        Tecnología de vanguardia y ética para transformar la <em>industria</em>, la <em>educación</em> y la <em>sociedad</em>.
+      </p>
+
+      <!-- COUNTDOWN -->
+      <div id="timer" class="timer" aria-live="polite">
+        <div class="tbox"><div class="num" id="d">—</div><div class="lab">DÍAS</div></div>
+        <div class="tbox"><div class="num" id="h">—</div><div class="lab">HORAS</div></div>
+        <div class="tbox"><div class="num" id="m">—</div><div class="lab">MIN</div></div>
+        <div class="tbox"><div class="num" id="s">—</div><div class="lab">SEG</div></div>
+      </div>
+
+      <div class="cta">
+        <a id="registro" href="#" class="btn btn-primary">🔗 Registro</a>
+        <a href="#agenda" class="btn btn-ghost">🗓 Programa</a>
+        <a href="#sede" class="btn btn-ghost">📍 Cómo llegar</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="tematicas">
+    <h2>Temáticas principales</h2>
+    <div class="grid cards">
+      <div class="card"><h3>IA Generativa &amp; LLMs</h3><p class="mut">Modelos fundacionales, seguridad, RAG y casos reales en educación y empresa.</p></div>
+      <div class="card"><h3>Visión por Computadora</h3><p class="mut">Detección y seguimiento, edge AI, cámaras inteligentes, inspección industrial.</p></div>
+      <div class="card"><h3>IoT &amp; Automatización</h3><p class="mut">Integración IA–OT, PLCs, mantenimiento predictivo, gemelos digitales.</p></div>
+      <div class="card"><h3>Ética y Regulación</h3><p class="mut">IA confiable, sesgos, privacidad, normativa y gobernanza.</p></div>
+      <div class="card"><h3>Emprendimiento &amp; Transferencia</h3><p class="mut">Casos de éxito, financiación, propiedad intelectual y escalamiento.</p></div>
+      <div class="card"><h3>Educación &amp; Sociedad</h3><p class="mut">IA para la inclusión, accesibilidad, evaluación y nuevas competencias.</p></div>
+    </div>
+  </section>
+
+  <section id="agenda">
+    <h2>Agenda preliminar (sujeta a cambios)</h2>
+    <div class="grid cards">
+      <div class="card">
+        <h3>Día 1 · Jue 13 nov</h3>
+        <ul class="mut">
+          <li>08:00 – Registro y bienvenida</li>
+          <li>09:00 – Conferencia magistral</li>
+          <li>11:00 – Panel: IA responsable</li>
+          <li>13:00 – Networking</li>
+          <li>16:00 – Talleres paralelos</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Día 2 · Vie 14 nov</h3>
+        <ul class="mut">
+          <li>09:00 – Casos de industria</li>
+          <li>12:00 – Demostraciones &amp; posters</li>
+          <li>15:00 – Reto rápido de IA</li>
+          <li>18:00 – Clausura y reconocimientos</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Convocatorias</h3>
+        <p class="mut">Pronto se abrirán las inscripciones a talleres, call for demos y posters estudiantiles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sede">
+    <h2>Sede y logística</h2>
+    <div class="map-wrap">
+      <div class="card" style="flex:1; min-width:260px;">
+        <h3>Universidad Tecnológica de Altamira</h3>
+        <p class="mut">
+          <strong>Dirección:</strong> Blvd. de los Ríos Km. 3+100, Carretera a Puerto Industrial, 89608 Altamira, Tamps.
+        </p>
+        <p class="mut">Estacionamiento disponible. Identificación requerida para el acceso al campus.</p>
+        <p><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Blvd.+de+los+R%C3%ADos+Km.+3%2B100%2C+Carretera+a+Puerto+Industrial%2C+89608+Altamira%2C+Tamps.">Abrir en Google Maps ↗</a></p>
+      </div>
+      <!-- Mapa compacto y movible -->
+      <iframe
+        class="map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        src="https://www.google.com/maps?q=Blvd.+de+los+R%C3%ADos+Km.+3%2B100,+Carretera+a+Puerto+Industrial,+89608+Altamira,+Tamps.&output=embed">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div class="grid cards">
+      <div class="card">
+        <h3>¿El evento es abierto?</h3>
+        <p class="mut">Sí. Cupo limitado. Se requiere registro previo; recibirás confirmación por correo.</p>
+      </div>
+      <div class="card">
+        <h3>¿Se entregan constancias?</h3>
+        <p class="mut">Se emitirán constancias digitales a asistentes registrados que completen al menos 80% del programa.</p>
+      </div>
+      <div class="card">
+        <h3>¿Habrá streaming?</h3>
+        <p class="mut">Se planea transmisión de conferencias magistrales; los talleres son presenciales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <div class="card">
+      <p class="mut">Organiza: <strong>UTALT-AI Team</strong></p>
+      <p class="mut">Dudas y prensa: <a href="mailto:contacto@inteligenciaartificialutalt.com.mx">contacto@inteligenciaartificialutalt.com.mx</a></p>
+      <p class="mut">Síguenos en redes para anuncios de ponentes y talleres.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 · 2º Congreso Internacional de Inteligencia Artificial – Universidad Tecnológica de Altamira
+  </footer>
+
+  <script>
+    // === COUNTDOWN ===
+    // Ajusta la zona horaria si lo necesitas. El siguiente usa hora local del navegador.
+    // Para fijar zona: usa "2025-11-13T09:00:00-06:00".
+    const start = new Date("2025-11-13T09:00:00"); 
+    const dEl = document.getElementById("d");
+    const hEl = document.getElementById("h");
+    const mEl = document.getElementById("m");
+    const sEl = document.getElementById("s");
+    const timerBox = document.getElementById("timer");
+
+    function pad(n){ return n.toString().padStart(2,"0"); }
+
+    function tick(){
+      const now = new Date();
+      const diff = start - now;
+      if(diff <= 0){
+        timerBox.innerHTML = '<div class="tbox" style="flex:1; min-width:260px;"><div class="num" style="font-size:34px;">¡Estamos en vivo!</div><div class="lab">Bienvenidos/as</div></div>';
+        clearInterval(intv);
+        return;
+      }
+      const s = Math.floor(diff / 1000) % 60;
+      const m = Math.floor(diff / (1000*60)) % 60;
+      const h = Math.floor(diff / (1000*60*60)) % 24;
+      const d = Math.floor(diff / (1000*60*60*24));
+      dEl.textContent = d;
+      hEl.textContent = pad(h);
+      mEl.textContent = pad(m);
+      sEl.textContent = pad(s);
+    }
+    const intv = setInterval(tick, 1000); tick();
+  </script>
+</body>
+</html>
